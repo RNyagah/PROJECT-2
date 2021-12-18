@@ -1,9 +1,6 @@
 #<!DOCTYPE html>
 <html lang="en">
 
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <link rel="stylesheet" href="../css/project2.css">
     <script src="../js/project2.js" defer></script>
@@ -34,12 +31,9 @@
         </form>
     
 
-    </form>
-
     <button type="submit" onclick="handleClick()">Submit</button>
 
     <p id="resultHere">Display answer here</p>
 
 </body>
 
-</html>
