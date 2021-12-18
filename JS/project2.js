@@ -1,59 +1,88 @@
-const akanNameCalculator = (CC, YY, MM, DD, gender) => {
-    // BODMAS
-    const calculationResult = (((CC / 4) - 2 * CC - 1) + ((5 * YY / 4)) + ((26 * (MM + 1) / 10)) + DD) % 7
-    let wholeNumber = Number(calculationResult.toFixed())
+let akanForm = document.getElementById("akanForm");
+akanForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    const maleNames = ["Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi", "Kwame"]
-    const femaleNames = ["Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua", "Ama"]
-    const daysOfTheWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    gender = document.getElementById("gender").value
+    dateOfBirth = document.getElementById("date").value
 
-    if (wholeNumber >= 7) {
-        // TODO - Check this later
-        // Extra work would be to randomize wholeNumber
-        // Using Math library
-        wholeNumber = wholeNumber - 1;
+    dateOfBirth = new Date(dateOfBirth);
+
+    let yearOfBirth = dateOfBirth.getFullYear();
+    let birthMonth = dateOfBirth.getMonth() + 1;
+    let dayOfBirth = dateOfBirth.getDate();
+
+    CC = yearOfBirth.toString().substr(0, 2);
+    YY = yearOfBirth.toString().substr(2, 2);
+    MM = birthMonth
+    DD = dayOfBirth
+
+    dayOfTheWeek = (((CC / 4) - 2 * CC - 1) + ((5 * YY / 4)) + ((26 * (MM + 1) / 10)) + DD) % 7;
+
+    dayOfTheWeek = parseInt(dayOfTheWeek);
+
+    let akanName;
+
+    femaleAkanNames = ["Ama", "Akosua", "Adwoa", "Abenaa", "Akua", "Yaa", "Afua"];
+    maleAkanNames = ["Kwame", "Kwasi", "Kwadwo", "Kwabena", "Kwaku", "Yaw", "Kofi"];
+
+    let bornDay;
+
+    if (dayOfTheWeek == 0 && gender == "female") {
+        bornDay = "Saturday";
+        akanName = femaleAkanNames[0];
+    } else if (dayOfTheWeek == 0 && gender == "male") {
+        bornDay = "Saturday";
+        akanName = maleAkanNames[0];
+
+
+    } else if (dayOfTheWeek == 1 && gender == "female") {
+        bornDay = "Sunday";
+        akanName = femaleAkanNames[1];
+    } else if (dayOfTheWeek == 1 && gender == "male") {
+        bornDay = "Sunday";
+        akanName = maleAkanNames[1];
+
+
+    } else if (dayOfTheWeek == 2 && gender == "female") {
+        bornDay = "Monday";
+        akanName = femaleAkanNames[2];
+    } else if (dayOfTheWeek == 2 && gender == "male") {
+        bornDay = "Monday";
+        akanName = maleAkanNames[2];
+
+
+    } else if (dayOfTheWeek == 3 && gender == "female") {
+        bornDay = "Tuesday";
+        akanName = femaleAkanNames[3];
+    } else if (dayOfTheWeek == 3 && gender == "male") {
+        bornDay = "Tuesday";
+        akanName = maleAkanNames[3];
+
+
+    } else if (dayOfTheWeek == 4 && gender == "female") {
+        bornDay = "Wednesday";
+        akanName = femaleAkanNames[4];
+    } else if (dayOfTheWeek == 4 && gender == "male") {
+        bornDay = "Wednesday";
+        akanName = maleAkanNames[4];
+
+
+    } else if (dayOfTheWeek == 5 && gender == "female") {
+        bornDay = "Thursday";
+        akanName = femaleAkanNames[5];
+    } else if (dayOfTheWeek == 5 && gender == "male") {
+        bornDay = "Thursday";
+        akanName = maleAkanNames[5];
+
+
+    } else if (dayOfTheWeek == 6 && gender == "female") {
+        bornDay = "Friday";
+        akanName = femaleAkanNames[6];
+    } else if (dayOfTheWeek == 6 && gender == "male") {
+        bornDay = "Friday";
+        akanName = maleAkanNames[6];
     }
 
-    if (gender == 'Male') {
-        return { 'name': maleNames[wholeNumber], 'day': daysOfTheWeek[wholeNumber] };
-    } else {
-        return { 'name': femaleNames[wholeNumber], 'day': daysOfTheWeek[wholeNumber] };
-    }
-}
-
-
-const handleClick = () => {
-    // Step One - Retrieve refrence to HTML elements
-    const birthDayBox = document.getElementById("birthDay")
-    const birthMonthBox = document.getElementById("birthMonth")
-    const birthYearBox = document.getElementById("birthYear")
-    const birthGenderBox = document.getElementById("birthGender")
-
-    // Step Two - Retrieve input elements values
-    const birthDay = birthDayBox.value;
-    const birthMonth = birthMonthBox.value;
-    const birthYear = birthYearBox.value;
-    const birthGender = birthGenderBox.value;
-
-    // Check user gender
-    const allGendersArray = ["Male", "Female"]
-    if (allGendersArray.includes(birthGender)) {
-        // CC = Century
-        // YY = Year
-        // 1989
-        const centuryVar = String(birthYear).substring(0, 2)
-        const yearVar = String(birthYear).substring(2)
-            // Check that day and month are valid
-        if (birthDay <= 0 || birthDay > 31) {
-            alert('Please enter a valid Day')
-        } else if (birthMonth <= 0 || birthMonth > 12) {
-            alert('Please enter a valid month')
-        } else {
-            // Execute calculation
-            const akanName = akanNameCalculator(centuryVar, yearVar, birthMonth, birthDay, birthGender);
-            alert(`Your Akan name is ${akanName.name} born on ${akanName.day}`)
-        }
-    } else {
-        alert('Please enter either Male or Female in the gender box')
-    }
-}
+    let result = document.getElementById("reveal-result").innerHTML = "You were born on a " + bornDay + " so your akan name is " + akanName + "!"
+    document.getElementById("akanForm");.reset();
+});
