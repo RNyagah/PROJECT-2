@@ -1,0 +1,89 @@
+body {
+    font-family: OpenSans, sans-serif;
+    background: #d6a7b1;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    margin: 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-around;
+    width: 50vw;
+}
+
+header nav a {
+    font-weight: bold;
+    margin: 0 10px;
+    color: #7c7c7c;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+h1 {
+    margin-left: 1rem;
+    letter-spacing: 2px;
+}
+
+img {
+    width: 100%;
+    height: 400px;
+    vertical-align: middle;
+}
+
+.card-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 20px;
+    grid-gap: 16px;
+    padding: 16px;
+    grid-auto-rows: 1fr;
+}
+
+.card-group .card {
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.card-group .card .card-title {
+    margin-bottom: 0.75rem;
+    font-size: 1.85rem;
+    font-weight: 400;
+}
+
+.card-group .card .card-brand {
+    margin-top: -0.375rem;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.card-group .card .card-body {
+    padding: 16px;
+}
+
+.card-group .card {
+    font-size: 20px;
+}
+
+.card-group .card {
+    margin-left: 1.25rem;
+}
+
+h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+}
